@@ -3,3 +3,29 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.form-label {
+  margin-right: .5rem;
+  margin-left: .5rem;
+}
+.btn {
+  margin-left: 1rem;
+  width: 10rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.card-container {
+  width: 236px;
+  height: 321px;
+  background-image: url("https://s-media-cache-ak0.pinimg.com/236x/9c/f8/a0/9cf8a04d6f23656206578215fbaf52cb--baseball-birthday-party-birthday-parties.jpg");
+  background-size: contain;
+}
+
+.card-container > h3 {
+  margin-top: 10rem;
+}
