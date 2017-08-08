@@ -5,30 +5,28 @@ import { Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootst
 class Forms extends Component {
 
   state = {
-    name:"",
-    age: "",
-    team: "",
+    fullName:"",
+    teamName: "",
+    postion: "",
     disabled: true,
     buttonClass: "warning",
-    buttonText: "Send",
-    query: ""
+    buttonText: "Send"
   }
 
-  componentDidMount(){
-    if(this.state.query)
-      this.setState({
-        disabled:false,
-        name: this.state.name,
-        team: this.state.team,
-        age: this.state.age,
-        value: ''
-      })
+  previewCard = (event) => {
+    const target = event.target
+    const value = target.value
+    const name = target.name
+    this.setState({
+      [name]: value,
+      disabled: false
+    })
   }
 
 
   render() {
 
-    const { disabled, buttonClass, buttonText, query, name, age, team } = this.state
+    const { disabled, buttonClass, buttonText, fullName, teamName, position } = this.state
 
     return (
       <div>
@@ -36,27 +34,27 @@ class Forms extends Component {
         <h2>Form 1: Inline</h2>
         <Form inline>
           <FormGroup controlId="formInlineName" validationState="warning">
-            <ControlLabel className="form-label">Name</ControlLabel>
-            <FormControl type="text" placeholder="Name" value={name} onChange={(event) => this.previewCard(event.target.value)} required/>
+            <ControlLabel className="form-label">Full Name</ControlLabel>
+            <FormControl type="text" name="fullName" placeholder="Name" value={fullName} onChange={this.previewCard} required/>
           </FormGroup>
           <FormGroup controlId="formInlineName" validationState="warning">
-            <ControlLabel className="form-label">Username</ControlLabel>
-            <FormControl type="text" placeholder="Username" value={age} required/>
+            <ControlLabel className="form-label">Team Name</ControlLabel>
+            <FormControl type="text" name="teamName" placeholder="Team" value={teamName} onChange={this.previewCard} required/>
           </FormGroup>
           <FormGroup controlId="formInlineEmail" validationState="warning">
-            <ControlLabel className="form-label">Email</ControlLabel>
-            <FormControl type="email" placeholder="jane.doe@example.com" value={team} required/>
+            <ControlLabel className="form-label">Position</ControlLabel>
+            <FormControl type="text" name="position" placeholder="Shortstop" value={position} onChange={this.previewCard} required/>
           </FormGroup>
-          <Button className={"btn btn-" + buttonClass } type="submit" disabled={disabled} onSubmit={this.sendingInformation}>
+          <Button className={"btn btn-" + buttonClass } type="submit" disabled={disabled}>
             {buttonText}
           </Button>
         </Form>
         <br />
         <div className="container">
           <div className="card-container">
-            <h3 className="first-name">{name}</h3>
-            <h6>{age}</h6>
-            <h6>{team}</h6>
+            <h3 className="first-name">{fullName}</h3>
+            <h6>{teamName}</h6>
+            <h6>{position}</h6>
           </div>
         </div>
         <hr />
